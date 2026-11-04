@@ -84,7 +84,7 @@ export default function LegalTemplate({ cv, density = 'normal', showPhoto = true
               </h2>
               <div className={r.item}>
                 {experience.map((exp) => (
-                  <div key={exp.id} className="grid grid-cols-4 gap-4">
+                  <article key={exp.id} className="grid grid-cols-4 gap-4">
                     <div className="text-xs text-slate-500 pt-1">
                       {formatDateRange(exp.startDate, exp.endDate, exp.current, locale)}
                     </div>
@@ -102,7 +102,7 @@ export default function LegalTemplate({ cv, density = 'normal', showPhoto = true
                         </ul>
                       )}
                     </div>
-                  </div>
+                  </article>
                 ))}
               </div>
             </section>
@@ -117,7 +117,7 @@ export default function LegalTemplate({ cv, density = 'normal', showPhoto = true
               </h2>
               <div className={r.item}>
                 {education.map((edu) => (
-                  <div key={edu.id} className="grid grid-cols-4 gap-4">
+                  <article key={edu.id} className="grid grid-cols-4 gap-4">
                     <div className="text-xs text-slate-500 pt-1">
                       {formatDateRange(edu.startDate, edu.endDate, edu.current, locale)}
                     </div>
@@ -126,7 +126,7 @@ export default function LegalTemplate({ cv, density = 'normal', showPhoto = true
                       <p className="text-xs text-slate-600">{edu.institution}</p>
                       {edu.field && <p className="text-xs text-slate-500">{edu.field}</p>}
                     </div>
-                  </div>
+                  </article>
                 ))}
               </div>
             </section>
@@ -140,10 +140,10 @@ export default function LegalTemplate({ cv, density = 'normal', showPhoto = true
               </h2>
               <div className="grid grid-cols-2 gap-2">
                 {skills.map((skill, idx) => (
-                  <div key={idx} className="flex items-center gap-2 text-sm text-slate-700">
+                  <article key={idx} className="flex items-center gap-2 text-sm text-slate-700">
                     <span className="w-1.5 h-1.5 bg-slate-800 rounded-full" />
                     {skill}
-                  </div>
+                  </article>
                 ))}
               </div>
             </section>
@@ -157,10 +157,10 @@ export default function LegalTemplate({ cv, density = 'normal', showPhoto = true
                   {L.languages}
                 </h2>
                 {languages.map((lang) => (
-                  <div key={lang.id} className={`flex justify-between text-sm ${r.itemMb}`}>
+                  <article key={lang.id} className={`flex justify-between text-sm ${r.itemMb}`}>
                     <span className="text-slate-700">{lang.name}</span>
                     <span className="text-slate-500">{lang.level}</span>
-                  </div>
+                  </article>
                 ))}
               </section>
             )}
@@ -171,11 +171,11 @@ export default function LegalTemplate({ cv, density = 'normal', showPhoto = true
                   {L.references}
                 </h2>
                 {references.filter(Boolean).map((ref) => (
-                  <div key={ref.id} className={r.itemMb}>
+                  <article key={ref.id} className={r.itemMb}>
                     <p className="text-sm font-bold text-slate-800">{ref.name}</p>
                     <p className="text-xs text-slate-600">{ref.position}</p>
                     <p className="text-xs text-slate-500">{ref.company}</p>
-                  </div>
+                  </article>
                 ))}
               </section>
             )}

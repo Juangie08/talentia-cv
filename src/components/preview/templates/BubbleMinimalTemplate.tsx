@@ -101,7 +101,7 @@ export default function BubbleMinimalTemplate({
               <h2 className={`${r.heading} text-[11px] font-black uppercase tracking-[0.28em]`} style={{ color: accentColor }}>{L.languages}</h2>
               <div className={r.item}>
                 {languages.map((item) => (
-                  <div key={item.id}>
+                  <article key={item.id}>
                     <div className="flex justify-between text-xs text-slate-600">
                       <span>{item.name}</span>
                       <span>{item.level}</span>
@@ -109,7 +109,7 @@ export default function BubbleMinimalTemplate({
                     <div className="mt-1 h-2 rounded-full bg-pink-100">
                       <div className="h-full rounded-full" style={{ width: getLanguageLevelWidth(item.level), backgroundColor: accentColor }} />
                     </div>
-                  </div>
+                  </article>
                 ))}
               </div>
             </div>

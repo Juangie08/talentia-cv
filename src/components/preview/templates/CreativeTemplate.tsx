@@ -117,7 +117,7 @@ export default function CreativeTemplate({
       </h2>
       <div className={r.item}>
         {languages.map((language) => (
-          <div key={language.id} className="space-y-1.5">
+          <article key={language.id} className="space-y-1.5">
             <div className="flex items-center justify-between text-[11px] font-bold">
               <span>{language.name}</span>
               <span className="shrink-0 text-[9px] uppercase tracking-tighter opacity-50">{language.level}</span>
@@ -125,7 +125,7 @@ export default function CreativeTemplate({
             <div className="h-1 w-full overflow-hidden rounded-full bg-white/10">
               <div className="h-full bg-white/80" style={{ width: getLanguageLevelWidth(language.level) }} />
             </div>
-          </div>
+          </article>
         ))}
       </div>
     </section>
@@ -149,7 +149,7 @@ export default function CreativeTemplate({
       </h2>
       <div className={r.item}>
         {experience.map((exp) => (
-          <div key={exp.id} className="group relative">
+          <article key={exp.id} className="group relative">
             <div className="mb-2 flex items-baseline justify-between gap-4">
               <h3 className="text-2xl font-black leading-none text-slate-900">{exp.position}</h3>
               <span className="shrink-0 text-[10px] font-bold text-slate-500">
@@ -167,7 +167,7 @@ export default function CreativeTemplate({
                 </li>
               ))}
             </ul>
-          </div>
+          </article>
         ))}
       </div>
     </section>
@@ -183,13 +183,13 @@ export default function CreativeTemplate({
       </h2>
       <div className={`grid grid-cols-1 ${r.cardGap}`}>
         {education.map((edu) => (
-          <div key={edu.id} className="space-y-2">
+          <article key={edu.id} className="space-y-2">
             <h3 className="text-sm font-black uppercase leading-tight text-slate-800">{edu.degree}</h3>
             <p className="text-xs font-bold text-slate-500">{edu.institution}</p>
             <p className="text-[10px] font-black uppercase tracking-widest opacity-40">
               {formatDateRange(edu.startDate, edu.endDate, edu.current, locale)}
             </p>
-          </div>
+          </article>
         ))}
       </div>
     </section>

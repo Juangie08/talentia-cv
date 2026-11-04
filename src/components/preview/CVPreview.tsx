@@ -134,6 +134,7 @@ function CVPreview({ data, template, customConfig, paperSize = 'letter', customi
   const outerRef = useRef<HTMLDivElement | null>(null);
   const [pageHeight, setPageHeight] = useState(0);
   const [totalPages, setTotalPages] = useState(1);
+  const [cutTops, setCutTops] = useState<number[]>([]);
   const [pagePxHeight, setPagePxHeight] = useState(0);
   const [fitScale, setFitScale] = useState(1);
   const [templateTransitioning, setTemplateTransitioning] = useState(false);
@@ -174,13 +175,46 @@ function CVPreview({ data, template, customConfig, paperSize = 'letter', customi
 
     const updateSize = () => {
       if (!previewRef.current) return;
-      const width = previewRef.current.clientWidth;
+      const root = previewRef.current;
+      const width = root.clientWidth;
       const ratio = pageConfig.height / pageConfig.width;
       const nextPageHeight = width * ratio;
       setPageHeight(nextPageHeight);
-      const contentHeight = previewRef.current.scrollHeight;
-      setTotalPages(Math.max(1, Math.ceil(contentHeight / nextPageHeight)));
-      setPagePxHeight(previewRef.current.offsetHeight);
+      const contentHeight = root.scrollHeight;
+      const pages = Math.max(1, Math.ceil(contentHeight / nextPageHeight));
+      setTotalPages(pages);
+      setPagePxHeight(root.offsetHeight);
+
+      // La línea de "corte" debe coincidir con donde el navegador partirá en
+      // papel: gracias a break-inside:avoid, un bloque que cruza el límite
+      // baja entero a la hoja siguiente, así que la línea se dibuja donde
+      // ese bloque empieza (no a mitad del texto).
+      const topInPreview = (el: HTMLElement): number => {
+        let top = 0;
+        let node: HTMLElement | null = el;
+        while (node && node !== root) {
+          top += node.offsetTop;
+          node = node.offsetParent as HTMLElement | null;
+        }
+        return top;
+      };
+      const articles = Array.from(root.querySelectorAll('article'));
+      const cuts: number[] = [];
+      for (let i = 1; i < pages; i += 1) {
+        const boundary = nextPageHeight * i;
+        let snapped: number | null = null;
+        for (const entry of articles) {
+          const top = topInPreview(entry as HTMLElement);
+          const height = (entry as HTMLElement).offsetHeight;
+          // Solo bloques que cruzan el límite y caben en una hoja: los más
+          // altos se parten igual (el navegador ignora el avoid).
+          if (top < boundary - 2 && top + height > boundary + 2 && height < nextPageHeight) {
+            snapped = snapped === null ? top : Math.min(snapped, top);
+          }
+        }
+        cuts.push(snapped ?? boundary);
+      }
+      setCutTops(cuts);
     };
 
     updateSize();
@@ -291,13 +325,13 @@ function CVPreview({ data, template, customConfig, paperSize = 'letter', customi
       </div>
       </div>
 
-      {pageHeight > 0 && Array.from({ length: Math.max(0, totalPages - 1) }).map((_, index) => (
+      {pageHeight > 0 && cutTops.map((cut, index) => (
         <div
           key={`pb-${index}`}
           data-print-hide
           className="pointer-events-none absolute z-50 flex flex-col items-center justify-center"
           style={{
-            top: 32 + pageHeight * (index + 1) * fitScale,
+            top: 32 + cut * fitScale,
             transform: 'translateY(-50%)',
             width: (PAGE_WIDTH_PX[paperSize] ?? PAGE_WIDTH_PX.letter) * fitScale,
           }}

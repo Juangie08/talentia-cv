@@ -234,7 +234,7 @@ export function RoleTemplateLayout({
       {cardTitle(L.languages)}
       <div className={r.item}>
         {languages.map((lang) => (
-          <div key={lang.id}>
+          <article key={lang.id}>
             <div className="flex justify-between text-sm font-semibold text-slate-600">
               <span>{lang.name}</span>
               <span className="shrink-0" style={{ color: palette.accentDark }}>{lang.level}</span>
@@ -248,7 +248,7 @@ export function RoleTemplateLayout({
                 }}
               />
             </div>
-          </div>
+          </article>
         ))}
       </div>
     </section>

@@ -45,7 +45,7 @@ export default function PeachMagazineTemplate({
       <h2 className={`text-[11px] font-black uppercase tracking-[0.3em] ${r.heading}`} style={{ color: accentColor }}>{L.languages}</h2>
       <div className={r.item}>
         {languages.map((item) => (
-          <div key={item.id}>
+          <article key={item.id}>
             <div className="flex justify-between text-xs text-slate-600">
               <span>{item.name}</span>
               <span className="font-semibold shrink-0">{item.level}</span>
@@ -53,7 +53,7 @@ export default function PeachMagazineTemplate({
             <div className="mt-1 h-2 rounded-full bg-orange-100">
               <div className="h-full rounded-full" style={{ width: getLanguageLevelWidth(item.level), backgroundColor: accentColor }} />
             </div>
-          </div>
+          </article>
         ))}
       </div>
     </section>

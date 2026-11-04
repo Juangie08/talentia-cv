@@ -35,7 +35,7 @@ export default function EjecutivoTemplate({ cv, accentColor, density = 'normal',
     <div className={r.sectionMb}>
       <h3 className={`text-xs font-bold uppercase tracking-widest ${r.heading}`} style={{ color: accentColor }}>{L.languages}</h3>
       {languages.map((lang) => (
-        <div key={lang.id} className={r.itemMb}>
+        <article key={lang.id} className={r.itemMb}>
           <div className="flex justify-between text-xs font-medium mb-1">
             <span className="text-slate-700">{lang.name}</span>
             <span className="shrink-0" style={{ color: accentColor }}>{lang.level}</span>
@@ -43,7 +43,7 @@ export default function EjecutivoTemplate({ cv, accentColor, density = 'normal',
           <div className="w-full h-1.5 bg-slate-200 rounded-full">
             <div className="h-full rounded-full" style={{ width: getLanguageLevelWidth(lang.level), backgroundColor: accentColor }} />
           </div>
-        </div>
+        </article>
       ))}
     </div>
   ) : null;
@@ -52,11 +52,11 @@ export default function EjecutivoTemplate({ cv, accentColor, density = 'normal',
     <div>
       <h3 className={`text-xs font-bold uppercase tracking-widest ${r.heading}`} style={{ color: accentColor }}>{L.references}</h3>
       {references.filter(Boolean).map((ref) => (
-        <div key={ref.id} className={`${r.itemMb} ${r.cardPad} bg-white border border-slate-200 rounded`}>
+        <article key={ref.id} className={`${r.itemMb} ${r.cardPad} bg-white border border-slate-200 rounded`}>
           <p className="text-xs font-bold text-slate-800">{ref.name}</p>
           <p className="text-[10px] text-slate-500">{ref.position}</p>
           <p className="text-[10px] text-slate-500">{ref.company}</p>
-        </div>
+        </article>
       ))}
     </div>
   ) : null;
@@ -79,7 +79,7 @@ export default function EjecutivoTemplate({ cv, accentColor, density = 'normal',
       </h3>
       <div className={r.item}>
         {experience.map((exp) => (
-          <div key={exp.id}>
+          <article key={exp.id}>
             <div className="flex justify-between items-start mb-2">
               <div className="min-w-0">
                 <h4 className="text-sm font-bold text-slate-800">{exp.position}</h4>
@@ -96,7 +96,7 @@ export default function EjecutivoTemplate({ cv, accentColor, density = 'normal',
                 ))}
               </ul>
             )}
-          </div>
+          </article>
         ))}
       </div>
     </div>
@@ -110,7 +110,7 @@ export default function EjecutivoTemplate({ cv, accentColor, density = 'normal',
       </h3>
       <div className={r.item}>
         {education.map((edu) => (
-          <div key={edu.id} className="flex justify-between items-start">
+          <article key={edu.id} className="flex justify-between items-start">
             <div className="min-w-0">
               <h4 className="text-sm font-bold text-slate-800">{edu.degree}</h4>
               <p className="text-xs text-slate-600">{edu.institution}</p>
@@ -119,7 +119,7 @@ export default function EjecutivoTemplate({ cv, accentColor, density = 'normal',
             <span className="text-xs text-slate-500 whitespace-nowrap shrink-0">
               {formatDateRange(edu.startDate, edu.endDate, edu.current, locale)}
             </span>
-          </div>
+          </article>
         ))}
       </div>
     </div>

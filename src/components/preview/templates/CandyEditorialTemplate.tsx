@@ -105,12 +105,12 @@ export default function CandyEditorialTemplate({
       <h2 className={`${r.heading} text-[11px] font-black uppercase tracking-[0.32em]`} style={{ color: accentColor }}>{L.languages}</h2>
       <div className={r.item}>
         {languages.map((item) => (
-          <div key={item.id} className="rounded-[22px] border border-rose-100 bg-[#fffaf8] px-4 py-3 text-sm text-slate-600">
+          <article key={item.id} className="rounded-[22px] border border-rose-100 bg-[#fffaf8] px-4 py-3 text-sm text-slate-600">
             <div className="flex justify-between gap-4">
               <span>{item.name}</span>
               <span className="font-semibold shrink-0" style={{ color: accentColor }}>{item.level}</span>
             </div>
-          </div>
+          </article>
         ))}
       </div>
     </div>

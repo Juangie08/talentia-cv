@@ -26,7 +26,7 @@ export default function SeniorTemplate({ cv, showPhoto = true, density = 'normal
 
       <div className={r.item}>
         {education.map((edu) => (
-          <div key={edu.id} className={`flex gap-4 bg-amber-50 rounded-lg ${r.cardPad}`}>
+          <article key={edu.id} className={`flex gap-4 bg-amber-50 rounded-lg ${r.cardPad}`}>
             <div className="w-12 h-12 rounded-full bg-amber-200 flex items-center justify-center flex-shrink-0">
               <GraduationCap className="w-6 h-6 text-amber-700" />
             </div>
@@ -38,7 +38,7 @@ export default function SeniorTemplate({ cv, showPhoto = true, density = 'normal
             <span className="text-xs text-slate-500 whitespace-nowrap self-center shrink-0">
               {formatDateRange(edu.startDate, edu.endDate, edu.current, locale)}
             </span>
-          </div>
+          </article>
         ))}
       </div>
     </section>
@@ -64,7 +64,7 @@ export default function SeniorTemplate({ cv, showPhoto = true, density = 'normal
     <div className={`bg-amber-50 rounded-xl ${r.cardPad}`}>
       <h3 className={`text-xs font-bold uppercase tracking-widest text-amber-700 ${r.heading}`}>{L.languages}</h3>
       {languages.map((lang) => (
-        <div key={lang.id} className={r.itemMb}>
+        <article key={lang.id} className={r.itemMb}>
           <div className="flex justify-between text-sm mb-1">
             <span className="font-medium text-slate-700">{lang.name}</span>
             <span className="text-amber-700 font-semibold shrink-0">{lang.level}</span>
@@ -72,7 +72,7 @@ export default function SeniorTemplate({ cv, showPhoto = true, density = 'normal
           <div className="w-full h-2 bg-amber-200 rounded-full overflow-hidden">
             <div className="h-full bg-amber-500 rounded-full" style={{ width: getLanguageLevelWidth(lang.level) }} />
           </div>
-        </div>
+        </article>
       ))}
     </div>
   ) : null;
@@ -81,11 +81,11 @@ export default function SeniorTemplate({ cv, showPhoto = true, density = 'normal
     <div className={`bg-amber-50 rounded-xl ${r.cardPad}`}>
       <h3 className={`text-xs font-bold uppercase tracking-widest text-amber-700 ${r.heading}`}>{L.references}</h3>
       {references.filter(Boolean).map((ref) => (
-        <div key={ref.id} className={`${r.itemMb} bg-white rounded-lg shadow-sm ${r.cardPad}`}>
+        <article key={ref.id} className={`${r.itemMb} bg-white rounded-lg shadow-sm ${r.cardPad}`}>
           <p className="text-sm font-bold text-slate-800">{ref.name}</p>
           <p className="text-xs text-slate-500">{ref.position}</p>
           <p className="text-xs text-slate-400">{ref.company}</p>
-        </div>
+        </article>
       ))}
     </div>
   ) : null;
@@ -183,7 +183,7 @@ export default function SeniorTemplate({ cv, showPhoto = true, density = 'normal
             
             <div className={r.item}>
               {experience.map((exp) => (
-                <div key={exp.id} className="relative pl-6 border-l-2 border-amber-200">
+                <article key={exp.id} className="relative pl-6 border-l-2 border-amber-200">
                   <div className="absolute -left-2 top-0 w-4 h-4 rounded-full bg-amber-500 border-2 border-white" />
                   
                   <div className="flex justify-between items-start mb-3">
@@ -206,7 +206,7 @@ export default function SeniorTemplate({ cv, showPhoto = true, density = 'normal
                       ))}
                     </div>
                   )}
-                </div>
+                </article>
               ))}
             </div>
           </section>

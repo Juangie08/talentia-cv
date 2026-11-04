@@ -79,7 +79,7 @@ export default function StudentTemplate({
               </h2>
               <div className={r.item}>
                 {education.map((edu) => (
-                  <div key={edu.id} className="flex flex-col sm:flex-row justify-between items-start gap-2">
+                  <article key={edu.id} className="flex flex-col sm:flex-row justify-between items-start gap-2">
                     <div className="space-y-1">
                       <h3 className="font-black text-slate-800 text-base leading-tight">
                         {edu.degree}
@@ -90,7 +90,7 @@ export default function StudentTemplate({
                     <span className="text-[10px] font-black text-slate-400 bg-white border border-slate-200 px-3 py-1 rounded-full whitespace-nowrap">
                       {formatDateRange(edu.startDate, edu.endDate, edu.current, locale)}
                     </span>
-                  </div>
+                  </article>
                 ))}
               </div>
             </section>
@@ -104,7 +104,7 @@ export default function StudentTemplate({
               </h2>
               <div className={r.item}>
                 {experience.map((exp) => (
-                  <div key={exp.id} className={`space-y-3 bg-white rounded-2xl border border-slate-100 shadow-sm ${r.cardPad}`}>
+                  <article key={exp.id} className={`space-y-3 bg-white rounded-2xl border border-slate-100 shadow-sm ${r.cardPad}`}>
                     <div className="flex justify-between items-baseline gap-4">
                       <h3 className="font-extrabold text-slate-800 text-sm">{exp.position}</h3>
                       <span className="text-[10px] font-bold text-slate-400 uppercase tracking-tighter">
@@ -121,7 +121,7 @@ export default function StudentTemplate({
                         </li>
                       ))}
                     </ul>
-                  </div>
+                  </article>
                 ))}
               </div>
             </section>
@@ -146,7 +146,7 @@ export default function StudentTemplate({
                 <h2 className={`text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 border-b pb-2 ${r.heading}`}>{L.languages}</h2>
                 <div className={r.item}>
                   {languages.map((language) => (
-                    <div key={language.id} className="space-y-1.5">
+                    <article key={language.id} className="space-y-1.5">
                       <div className="flex justify-between items-center text-xs">
                         <span className="font-black text-slate-800 uppercase tracking-wider">{language.name}</span>
                         <span className="text-slate-400 font-bold text-[10px] pb-0.5 px-2 bg-slate-100 rounded tracking-tighter">
@@ -156,7 +156,7 @@ export default function StudentTemplate({
                       <div className="w-full h-1.5 bg-slate-200 rounded-full overflow-hidden">
                         <div className="h-full bg-blue-500" style={{ width: getLanguageLevelWidth(language.level) }} />
                       </div>
-                    </div>
+                    </article>
                   ))}
                 </div>
               </section>

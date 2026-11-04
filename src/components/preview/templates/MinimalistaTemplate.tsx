@@ -40,7 +40,7 @@ export default function MinimalistaTemplate({ cv, accentColor, fontFamily, densi
             <h2 className={`text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 border-b pb-2 ${r.heading}`}>{L.education}</h2>
             <div className={r.item}>
               {education.map((edu) => (
-                <div key={edu.id} className="flex justify-between items-start">
+                <article key={edu.id} className="flex justify-between items-start">
                   <div className={r.tight}>
                     <h3 className="font-bold text-slate-800 text-sm">
                       {edu.degree}
@@ -51,7 +51,7 @@ export default function MinimalistaTemplate({ cv, accentColor, fontFamily, densi
                   <span className="text-[10px] font-bold text-slate-400 whitespace-nowrap bg-slate-50 px-2 py-1 rounded">
                     {formatDateRange(edu.startDate, edu.endDate, edu.current, locale)}
                   </span>
-                </div>
+                </article>
               ))}
             </div>
           </section>
@@ -62,7 +62,7 @@ export default function MinimalistaTemplate({ cv, accentColor, fontFamily, densi
             <h2 className={`text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 border-b pb-2 ${r.heading}`}>{L.experienceProjects}</h2>
             <div className={r.item}>
               {experience.map((exp) => (
-                <div key={exp.id} className={r.tight}>
+                <article key={exp.id} className={r.tight}>
                   <div className="flex justify-between items-baseline">
                     <h3 className="font-bold text-slate-800 text-sm">{exp.position}</h3>
                     <span className="text-[10px] font-bold text-slate-400">{formatDateRange(exp.startDate, exp.endDate, exp.current, locale)}</span>
@@ -76,7 +76,7 @@ export default function MinimalistaTemplate({ cv, accentColor, fontFamily, densi
                       </li>
                     ))}
                   </ul>
-                </div>
+                </article>
               ))}
             </div>
           </section>
@@ -102,7 +102,7 @@ export default function MinimalistaTemplate({ cv, accentColor, fontFamily, densi
               <h2 className={`text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 border-b pb-2 ${r.heading}`}>{L.languages}</h2>
               <div className={r.item}>
                 {languages.map((language) => (
-                  <div key={language.id} className={r.tight}>
+                  <article key={language.id} className={r.tight}>
                     <div className="flex justify-between items-center text-xs">
                       <span className="font-bold text-slate-700">{language.name}</span>
                       <span className="text-slate-400 italic text-[10px]">{language.level}</span>
@@ -110,7 +110,7 @@ export default function MinimalistaTemplate({ cv, accentColor, fontFamily, densi
                     <div className="w-full h-1 bg-slate-200 rounded-full overflow-hidden">
                       <div className="h-full" style={{ width: getLanguageLevelWidth(language.level), backgroundColor: accent }} />
                     </div>
-                  </div>
+                  </article>
                 ))}
               </div>
             </section>
@@ -122,13 +122,13 @@ export default function MinimalistaTemplate({ cv, accentColor, fontFamily, densi
             <h2 className={`text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 border-b pb-2 ${r.heading}`}>{L.references}</h2>
             <div className={`grid grid-cols-2 ${r.cardGap}`}>
               {references.map((reference) => (
-                <div key={reference.id} className="text-xs">
+                <article key={reference.id} className="text-xs">
                   <p className="font-bold text-slate-800">{reference.name}</p>
                   <p className="text-slate-500 font-medium">
                     {reference.position} - {reference.company}
                   </p>
                   <p className="text-[10px] mt-1 font-bold" style={{ color: accent }}>{reference.phone}</p>
-                </div>
+                </article>
               ))}
             </div>
           </section>

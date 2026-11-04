@@ -23,7 +23,7 @@ export default function MarketingTemplate({ cv, accentColor, density = 'normal',
       </h2>
       <div className={r.item}>
         {experience.map((exp) => (
-          <div key={exp.id} className="relative pl-6">
+          <article key={exp.id} className="relative pl-6">
             <div className="absolute left-0 top-2 w-3 h-3 rounded-full" style={{ backgroundColor: accentColor }} />
             <div className="absolute left-1 top-5 w-px h-full" style={{ backgroundColor: accentColor + '40' }} />
 
@@ -46,7 +46,7 @@ export default function MarketingTemplate({ cv, accentColor, density = 'normal',
                 ))}
               </div>
             )}
-          </div>
+          </article>
         ))}
       </div>
     </section>
@@ -60,7 +60,7 @@ export default function MarketingTemplate({ cv, accentColor, density = 'normal',
       </h2>
       <div className={r.item}>
         {education.map((edu) => (
-          <div key={edu.id} className={`flex gap-4 ${r.cardPad} bg-slate-50 rounded-lg`}>
+          <article key={edu.id} className={`flex gap-4 ${r.cardPad} bg-slate-50 rounded-lg`}>
             <div className="w-2 h-full rounded-full shrink-0" style={{ backgroundColor: accentColor }} />
             <div className="flex-1 min-w-0">
               <h4 className="text-sm font-bold text-slate-800">{edu.degree}</h4>
@@ -70,7 +70,7 @@ export default function MarketingTemplate({ cv, accentColor, density = 'normal',
             <span className="text-xs text-slate-500 whitespace-nowrap shrink-0">
               {formatDateRange(edu.startDate, edu.endDate, edu.current, locale)}
             </span>
-          </div>
+          </article>
         ))}
       </div>
     </section>
@@ -94,7 +94,7 @@ export default function MarketingTemplate({ cv, accentColor, density = 'normal',
     <div className={`${r.cardPad} bg-slate-50 rounded-xl`}>
       <h3 className={`text-xs font-bold uppercase tracking-wider ${r.heading}`} style={{ color: accentColor }}>{L.languages}</h3>
       {languages.map((lang) => (
-        <div key={lang.id} className={r.itemMb}>
+        <article key={lang.id} className={r.itemMb}>
           <div className="flex justify-between text-sm mb-1">
             <span className="font-medium text-slate-700">{lang.name}</span>
             <span className="shrink-0" style={{ color: accentColor }}>{lang.level}</span>
@@ -102,7 +102,7 @@ export default function MarketingTemplate({ cv, accentColor, density = 'normal',
           <div className="w-full h-1.5 bg-slate-200 rounded-full overflow-hidden">
             <div className="h-full rounded-full" style={{ width: getLanguageLevelWidth(lang.level), backgroundColor: accentColor }} />
           </div>
-        </div>
+        </article>
       ))}
     </div>
   ) : null;
@@ -111,11 +111,11 @@ export default function MarketingTemplate({ cv, accentColor, density = 'normal',
     <div className={`${r.cardPad} bg-slate-50 rounded-xl`}>
       <h3 className={`text-xs font-bold uppercase tracking-wider ${r.heading}`} style={{ color: accentColor }}>{L.references}</h3>
       {references.filter(Boolean).map((ref) => (
-        <div key={ref.id} className={`${r.itemMb} ${r.cardPad} bg-white rounded-lg shadow-sm`}>
+        <article key={ref.id} className={`${r.itemMb} ${r.cardPad} bg-white rounded-lg shadow-sm`}>
           <p className="text-sm font-bold text-slate-800">{ref.name}</p>
           <p className="text-xs text-slate-500">{ref.position}</p>
           <p className="text-xs text-slate-400">{ref.company}</p>
-        </div>
+        </article>
       ))}
     </div>
   ) : null;

@@ -86,7 +86,7 @@ export default function TechTemplate({ cv, accentColor, showPhoto = true, densit
             
             <div className={r.item}>
               {experience.map((exp) => (
-                <div key={exp.id} className={`rounded-lg bg-slate-800/30 border-l-2 ${r.cardPad}`} style={{ borderColor: accentColor }}>
+                <article key={exp.id} className={`rounded-lg bg-slate-800/30 border-l-2 ${r.cardPad}`} style={{ borderColor: accentColor }}>
                   <div className="flex justify-between items-start mb-2">
                     <div>
                       <h4 className="text-sm font-bold text-white">{exp.position}</h4>
@@ -106,7 +106,7 @@ export default function TechTemplate({ cv, accentColor, showPhoto = true, densit
                       ))}
                     </ul>
                   )}
-                </div>
+                </article>
               ))}
             </div>
           </section>
@@ -126,12 +126,12 @@ export default function TechTemplate({ cv, accentColor, showPhoto = true, densit
               
               <div className={r.item}>
                 {education.map((edu) => (
-                  <div key={edu.id} className={`rounded bg-slate-800/30 ${r.cardPad}`}>
+                  <article key={edu.id} className={`rounded bg-slate-800/30 ${r.cardPad}`}>
                     <h4 className="text-sm font-bold text-white">{edu.degree}</h4>
                     <p className="text-xs text-slate-400">{edu.institution}</p>
                     {edu.field && <p className="text-xs" style={{ color: accentColor }}>{edu.field}</p>}
                     <span className="text-xs text-slate-500 font-mono">{formatDateRange(edu.startDate, edu.endDate, edu.current, locale)}</span>
-                  </div>
+                  </article>
                 ))}
               </div>
             </section>
@@ -164,10 +164,10 @@ export default function TechTemplate({ cv, accentColor, showPhoto = true, densit
             <section>
               <h2 className={`text-xs font-bold uppercase tracking-wider text-slate-400 ${r.heading}`}>{L.languages}</h2>
               {languages.map((lang) => (
-                <div key={lang.id} className="flex justify-between text-sm py-1 border-b border-slate-800">
+                <article key={lang.id} className="flex justify-between text-sm py-1 border-b border-slate-800">
                   <span className="text-slate-300">{lang.name}</span>
                   <span style={{ color: accentColor }}>{lang.level}</span>
-                </div>
+                </article>
               ))}
             </section>
           )}
@@ -176,10 +176,10 @@ export default function TechTemplate({ cv, accentColor, showPhoto = true, densit
             <section>
               <h2 className={`text-xs font-bold uppercase tracking-wider text-slate-400 ${r.heading}`}>{L.references}</h2>
               {references.filter(Boolean).map((ref) => (
-                <div key={ref.id} className={`${r.itemMb} bg-slate-800/30 rounded ${r.cardPad}`}>
+                <article key={ref.id} className={`${r.itemMb} bg-slate-800/30 rounded ${r.cardPad}`}>
                   <p className="text-sm font-bold text-white">{ref.name}</p>
                   <p className="text-xs text-slate-400">{ref.position}</p>
-                </div>
+                </article>
               ))}
             </section>
           )}

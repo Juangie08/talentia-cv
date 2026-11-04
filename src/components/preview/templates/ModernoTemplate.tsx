@@ -74,7 +74,7 @@ export default function ModernoTemplate({ cv, accentColor, fontFamily, showPhoto
       </h3>
       <div className={r.item}>
         {languages.map((language) => (
-          <div key={language.id} className={r.tight}>
+          <article key={language.id} className={r.tight}>
             <div className="flex justify-between text-[10px] font-bold">
               <span>{language.name}</span>
               <span style={{ color: accent }}>{language.level}</span>
@@ -82,7 +82,7 @@ export default function ModernoTemplate({ cv, accentColor, fontFamily, showPhoto
             <div className="w-full h-1 bg-slate-800 rounded-full overflow-hidden">
               <div className="h-full" style={{ width: getLanguageLevelWidth(language.level), backgroundColor: accent }} />
             </div>
-          </div>
+          </article>
         ))}
       </div>
     </div>
@@ -129,7 +129,7 @@ export default function ModernoTemplate({ cv, accentColor, fontFamily, showPhoto
       </h2>
       <div className={r.item}>
         {experience.map((exp) => (
-          <div key={exp.id} className="relative pl-6">
+          <article key={exp.id} className="relative pl-6">
             <span className="absolute left-0 top-1.5 h-1.5 w-1.5 rounded-full" style={{ backgroundColor: accent }} />
             <div className="flex justify-between items-baseline mb-1">
               <h3 className="font-bold text-slate-900" style={{ fontSize: 'var(--cv-font-size-base, 10px)' }}>{exp.position}</h3>
@@ -145,7 +145,7 @@ export default function ModernoTemplate({ cv, accentColor, fontFamily, showPhoto
                 </li>
               ))}
             </ul>
-          </div>
+          </article>
         ))}
       </div>
     </section>
@@ -156,7 +156,7 @@ export default function ModernoTemplate({ cv, accentColor, fontFamily, showPhoto
       <h2 className={`cv-section-title text-slate-400 border-b border-slate-100 pb-2 ${r.heading}`} style={{ color: accent, fontSize: 'var(--cv-font-size-heading, 12px)' }}>{L.educationShort}</h2>
       <div className={`grid grid-cols-1 ${r.cardGap}`}>
         {education.map((edu) => (
-          <div key={edu.id} className="flex justify-between items-start">
+          <article key={edu.id} className="flex justify-between items-start">
             <div>
               <h3 className="font-bold text-slate-900" style={{ fontSize: 'var(--cv-font-size-base, 10px)' }}>
                 {edu.degree}
@@ -165,7 +165,7 @@ export default function ModernoTemplate({ cv, accentColor, fontFamily, showPhoto
               <p className="text-slate-500 text-xs font-medium">{edu.institution}</p>
             </div>
             <span className="text-[10px] font-bold text-slate-400 uppercase">{formatDateRange(edu.startDate, edu.endDate, edu.current, locale)}</span>
-          </div>
+          </article>
         ))}
       </div>
     </section>
@@ -178,13 +178,13 @@ export default function ModernoTemplate({ cv, accentColor, fontFamily, showPhoto
       </h2>
       <div className={`grid grid-cols-2 ${r.cardGap}`}>
         {references.map((reference) => (
-          <div key={reference.id} className="text-xs space-y-0.5">
+          <article key={reference.id} className="text-xs space-y-0.5">
             <p className="font-bold text-slate-900">{reference.name}</p>
             <p className="text-slate-500 font-medium italic">
               {reference.position} en {reference.company}
             </p>
             <p className="text-slate-400 font-bold tracking-tighter">{reference.phone}</p>
-          </div>
+          </article>
         ))}
       </div>
     </section>

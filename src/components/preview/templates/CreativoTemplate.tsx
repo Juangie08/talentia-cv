@@ -40,11 +40,11 @@ export default function CreativoTemplate({ cv, accentColor, fontFamily, density 
       </h2>
       <div className={r.item}>
         {education.map((edu) => (
-          <div key={edu.id} className="space-y-1">
+          <article key={edu.id} className="space-y-1">
             <h3 className="font-bold text-slate-800 text-sm leading-tight">{edu.degree}</h3>
             <p className="text-xs text-slate-500 font-medium">{edu.institution}</p>
             <p className="text-[10px] font-mono text-slate-500">{formatDateRange(edu.startDate, edu.endDate, edu.current, locale)}</p>
-          </div>
+          </article>
         ))}
       </div>
     </section>
@@ -55,10 +55,10 @@ export default function CreativoTemplate({ cv, accentColor, fontFamily, density 
       <h2 className={`text-xs font-black uppercase tracking-widest text-slate-500 ${r.heading}`}>{L.languages}</h2>
       <div className={r.item}>
         {languages.map((language) => (
-          <div key={language.id} className="flex justify-between items-center text-xs">
+          <article key={language.id} className="flex justify-between items-center text-xs">
             <span className="font-bold text-slate-700">{language.name}</span>
             <span className="font-mono text-[10px]" style={{ color: accent }}>{language.level}</span>
-          </div>
+          </article>
         ))}
       </div>
     </section>
@@ -75,7 +75,7 @@ export default function CreativoTemplate({ cv, accentColor, fontFamily, density 
       <h2 className={`text-xs font-black uppercase tracking-widest text-slate-500 ${r.heading} border-b pb-2`}>{L.experienceProfessional}</h2>
       <div className={r.item}>
         {experience.map((exp) => (
-          <div key={exp.id} className="group">
+          <article key={exp.id} className="group">
             <div className="flex justify-between items-baseline mb-2">
               <h3 className="text-xl font-bold text-slate-900 transition-colors uppercase tracking-tighter" style={{ color: accent }}>
                 {exp.position}
@@ -96,7 +96,7 @@ export default function CreativoTemplate({ cv, accentColor, fontFamily, density 
                 </li>
               ))}
             </ul>
-          </div>
+          </article>
         ))}
       </div>
     </section>
@@ -110,12 +110,12 @@ export default function CreativoTemplate({ cv, accentColor, fontFamily, density 
       <h2 className={`text-xs font-black uppercase tracking-widest text-slate-500 ${r.heading}`}>{L.references}</h2>
       <div className={`grid grid-cols-1 ${r.cardGap}`}>
         {references.filter(Boolean).map((reference) => (
-          <div key={reference.id} className="text-xs">
+          <article key={reference.id} className="text-xs">
             <p className="font-bold text-slate-700">{reference.name}</p>
             <p className="text-slate-500">
               {reference.position} @ {reference.company}
             </p>
-          </div>
+          </article>
         ))}
       </div>
     </section>

@@ -26,7 +26,7 @@ export default function DesignerTemplate({ cv, accentColor, showPhoto = true, de
 
       <div className={r.item}>
         {experience.map((exp) => (
-          <div key={exp.id} className="group relative p-5 bg-slate-50 rounded-2xl">
+          <article key={exp.id} className="group relative p-5 bg-slate-50 rounded-2xl">
             <div className="absolute left-0 top-0 bottom-0 w-1 rounded-l-2xl" style={{ backgroundColor: accentColor }} />
 
             <div className="flex justify-between items-start mb-2 pl-3">
@@ -49,7 +49,7 @@ export default function DesignerTemplate({ cv, accentColor, showPhoto = true, de
                 ))}
               </div>
             )}
-          </div>
+          </article>
         ))}
       </div>
     </section>
@@ -66,7 +66,7 @@ export default function DesignerTemplate({ cv, accentColor, showPhoto = true, de
 
       <div className={r.item}>
         {education.map((edu) => (
-          <div key={edu.id} className={`flex items-center gap-4 ${r.cardPad} bg-slate-50 rounded-xl`}>
+          <article key={edu.id} className={`flex items-center gap-4 ${r.cardPad} bg-slate-50 rounded-xl`}>
             <div className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style={{ backgroundColor: accentColor + '20' }}>
               <GraduationCap className="w-6 h-6" style={{ color: accentColor }} />
             </div>
@@ -78,7 +78,7 @@ export default function DesignerTemplate({ cv, accentColor, showPhoto = true, de
             <span className="text-xs text-slate-400 whitespace-nowrap shrink-0">
               {formatDateRange(edu.startDate, edu.endDate, edu.current, locale)}
             </span>
-          </div>
+          </article>
         ))}
       </div>
     </section>
@@ -104,12 +104,12 @@ export default function DesignerTemplate({ cv, accentColor, showPhoto = true, de
     <div className={`${r.cardPad} bg-slate-50 rounded-2xl`}>
       <h3 className={`text-xs font-bold uppercase tracking-wider ${r.heading}`} style={{ color: accentColor }}>{L.languages}</h3>
       {languages.map((lang) => (
-        <div key={lang.id} className="flex justify-between items-center py-2 border-b border-slate-200 last:border-0">
+        <article key={lang.id} className="flex justify-between items-center py-2 border-b border-slate-200 last:border-0">
           <span className="text-sm font-medium text-slate-700">{lang.name}</span>
           <span className="text-xs px-2 py-1 rounded shrink-0" style={{ backgroundColor: accentColor + '20', color: accentColor }}>
             {lang.level}
           </span>
-        </div>
+        </article>
       ))}
     </div>
   ) : null;
@@ -118,11 +118,11 @@ export default function DesignerTemplate({ cv, accentColor, showPhoto = true, de
     <div className={`${r.cardPad} bg-slate-50 rounded-2xl`}>
       <h3 className={`text-xs font-bold uppercase tracking-wider ${r.heading}`} style={{ color: accentColor }}>{L.references}</h3>
       {references.filter(Boolean).map((ref) => (
-        <div key={ref.id} className={`${r.itemMb} ${r.cardPad} bg-white rounded-xl shadow-sm`}>
+        <article key={ref.id} className={`${r.itemMb} ${r.cardPad} bg-white rounded-xl shadow-sm`}>
           <p className="text-sm font-bold text-slate-800">{ref.name}</p>
           <p className="text-xs text-slate-500">{ref.position}</p>
           <p className="text-xs text-slate-400">{ref.company}</p>
-        </div>
+        </article>
       ))}
     </div>
   ) : null;

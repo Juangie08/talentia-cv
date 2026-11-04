@@ -98,10 +98,10 @@ export default function CherryRibbonTemplate({
       <h2 className={`${r.heading} text-[11px] font-black uppercase tracking-[0.28em]`} style={{ color: accentColor }}>{L.languages}</h2>
       <div className={`${r.item} text-xs text-slate-600`}>
         {languages.map((item) => (
-          <div key={item.id} className="flex items-center justify-between rounded-xl bg-rose-50/60 px-3 py-2">
+          <article key={item.id} className="flex items-center justify-between rounded-xl bg-rose-50/60 px-3 py-2">
             <span>{item.name}</span>
             <span className="font-semibold shrink-0" style={{ color: accentColor }}>{stripUrlProtocol(item.level)}</span>
-          </div>
+          </article>
         ))}
       </div>
     </section>

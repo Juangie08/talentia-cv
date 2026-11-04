@@ -89,7 +89,7 @@ export default function MedicoTemplate({ cv, accentColor, density = 'normal', sh
                 </h2>
                 <div className={r.item}>
                   {experience.map((exp) => (
-                    <div key={exp.id} className="relative pl-4 border-l-2" style={{ borderColor: accentColor }}>
+                    <article key={exp.id} className="relative pl-4 border-l-2" style={{ borderColor: accentColor }}>
                       <div className="absolute -left-1.5 top-1 w-3 h-3 rounded-full" style={{ backgroundColor: accentColor }} />
                       <h4 className="text-sm font-bold text-slate-800">{exp.position}</h4>
                       <p className="text-xs font-medium mb-1" style={{ color: accentColor }}>{exp.company}</p>
@@ -101,7 +101,7 @@ export default function MedicoTemplate({ cv, accentColor, density = 'normal', sh
                           ))}
                         </ul>
                       )}
-                    </div>
+                    </article>
                   ))}
                 </div>
               </section>
@@ -116,13 +116,13 @@ export default function MedicoTemplate({ cv, accentColor, density = 'normal', sh
                 </h2>
                 <div className={r.item}>
                   {education.map((edu) => (
-                    <div key={edu.id} className="relative pl-4 border-l-2" style={{ borderColor: accentColor }}>
+                    <article key={edu.id} className="relative pl-4 border-l-2" style={{ borderColor: accentColor }}>
                       <div className="absolute -left-1.5 top-1 w-3 h-3 rounded-full" style={{ backgroundColor: accentColor }} />
                       <h4 className="text-sm font-bold text-slate-800">{edu.degree}</h4>
                       <p className="text-xs text-slate-600">{edu.institution}</p>
                       {edu.field && <p className="text-xs text-slate-500">{edu.field}</p>}
                       <span className="text-xs text-slate-500">{formatDateRange(edu.startDate, edu.endDate, edu.current, locale)}</span>
-                    </div>
+                    </article>
                   ))}
                 </div>
               </section>
@@ -140,10 +140,10 @@ export default function MedicoTemplate({ cv, accentColor, density = 'normal', sh
                 </h2>
                 <div className={r.tight}>
                   {skills.map((skill, idx) => (
-                    <div key={idx} className="flex items-center gap-2">
+                    <article key={idx} className="flex items-center gap-2">
                       <div className="w-2 h-2 rounded-full" style={{ backgroundColor: accentColor }} />
                       <span className="text-sm text-slate-700">{skill}</span>
-                    </div>
+                    </article>
                   ))}
                 </div>
               </section>
@@ -155,12 +155,12 @@ export default function MedicoTemplate({ cv, accentColor, density = 'normal', sh
                 <h2 className={`text-sm font-bold uppercase tracking-wider ${r.heading}`} style={{ color: accentColor }}>{L.languages}</h2>
                 <div className={r.item}>
                   {languages.map((lang) => (
-                    <div key={lang.id} className="flex justify-between items-center">
+                    <article key={lang.id} className="flex justify-between items-center">
                       <span className="text-sm font-medium text-slate-700">{lang.name}</span>
                       <span className="text-xs px-2 py-1 rounded" style={{ backgroundColor: accentColor + '20', color: accentColor }}>
                         {lang.level}
                       </span>
-                    </div>
+                    </article>
                   ))}
                 </div>
               </section>
@@ -172,11 +172,11 @@ export default function MedicoTemplate({ cv, accentColor, density = 'normal', sh
                 <h2 className={`text-sm font-bold uppercase tracking-wider ${r.heading}`} style={{ color: accentColor }}>{L.references}</h2>
                 <div className={r.item}>
                   {references.filter(Boolean).map((ref) => (
-                    <div key={ref.id} className={`${r.cardPad} bg-slate-50 rounded-lg`}>
+                    <article key={ref.id} className={`${r.cardPad} bg-slate-50 rounded-lg`}>
                       <p className="text-sm font-bold text-slate-800">{ref.name}</p>
                       <p className="text-xs text-slate-500">{ref.position} - {ref.company}</p>
                       <p className="text-xs text-slate-400">{ref.email}</p>
-                    </div>
+                    </article>
                   ))}
                 </div>
               </section>

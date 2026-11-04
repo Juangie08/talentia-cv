@@ -352,6 +352,20 @@
   body.print-cv #cv-preview article {
     break-inside: avoid;
   }
+  /* El título de sección viaja con su contenido: nada de encabezados
+     huérfanos al final de la hoja. */
+  body.print-cv #cv-preview h1,
+  body.print-cv #cv-preview h2,
+  body.print-cv #cv-preview h3,
+  body.print-cv #cv-preview h4 {
+    break-after: avoid;
+  }
+  /* Ni renglones sueltos al inicio o final de la hoja. */
+  body.print-cv #cv-preview p,
+  body.print-cv #cv-preview li {
+    orphans: 3;
+    widows: 3;
+  }
 
   * {
     -webkit-print-color-adjust: exact !important;

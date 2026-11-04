@@ -78,7 +78,7 @@ export default function CorporateTemplate({ cv, showPhoto = true, density = 'nor
             
             <div className={r.item}>
               {experience.map((exp) => (
-                <div key={exp.id}>
+                <article key={exp.id}>
                   <div className="flex justify-between items-start mb-2">
                     <div>
                       <h4 className="text-base font-bold text-slate-800">{exp.position}</h4>
@@ -95,7 +95,7 @@ export default function CorporateTemplate({ cv, showPhoto = true, density = 'nor
                       ))}
                     </ul>
                   )}
-                </div>
+                </article>
               ))}
             </div>
           </section>
@@ -111,7 +111,7 @@ export default function CorporateTemplate({ cv, showPhoto = true, density = 'nor
             
             <div className={r.item}>
               {education.map((edu) => (
-                <div key={edu.id} className={`flex justify-between items-start ${r.cardPad} bg-slate-50 rounded-lg`}>
+                <article key={edu.id} className={`flex justify-between items-start ${r.cardPad} bg-slate-50 rounded-lg`}>
                   <div>
                     <h4 className="text-sm font-bold text-slate-800">{edu.degree}</h4>
                     <p className="text-xs text-slate-600">{edu.institution}</p>
@@ -120,7 +120,7 @@ export default function CorporateTemplate({ cv, showPhoto = true, density = 'nor
                   <span className="text-xs text-slate-500 whitespace-nowrap">
                     {formatDateRange(edu.startDate, edu.endDate, edu.current, locale)}
                   </span>
-                </div>
+                </article>
               ))}
             </div>
           </section>
@@ -148,10 +148,10 @@ export default function CorporateTemplate({ cv, showPhoto = true, density = 'nor
             <section>
               <h3 className={`text-sm font-bold uppercase text-blue-800 ${r.heading}`}>{L.languages}</h3>
               {languages.map((lang) => (
-                <div key={lang.id} className="flex justify-between py-2 border-b border-slate-100">
+                <article key={lang.id} className="flex justify-between py-2 border-b border-slate-100">
                   <span className="text-sm text-slate-700">{lang.name}</span>
                   <span className="text-sm text-blue-700 font-medium">{lang.level}</span>
-                </div>
+                </article>
               ))}
             </section>
           )}
@@ -163,11 +163,11 @@ export default function CorporateTemplate({ cv, showPhoto = true, density = 'nor
             <h3 className={`text-sm font-bold uppercase text-blue-800 ${r.heading}`}>{L.references}</h3>
             <div className={`grid grid-cols-2 ${r.cardGap}`}>
               {references.filter(Boolean).map((ref) => (
-                <div key={ref.id} className={`${r.cardPad} bg-slate-50 rounded-lg`}>
+                <article key={ref.id} className={`${r.cardPad} bg-slate-50 rounded-lg`}>
                   <p className="text-sm font-bold text-slate-800">{ref.name}</p>
                   <p className="text-xs text-slate-500">{ref.position}</p>
                   <p className="text-xs text-slate-500">{ref.company}</p>
-                </div>
+                </article>
               ))}
             </div>
           </section>

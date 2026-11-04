@@ -139,7 +139,7 @@ export default function DeveloperTemplate({
             </h2>
             <div className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 ${r.cardGap}`}>
               {categorizedSkills.map(([category, list]) => (
-                <div key={category}>
+                <article key={category}>
                   <h3 className={`flex items-center gap-1.5 text-[11px] font-black uppercase tracking-wider text-slate-800 ${r.heading}`}>
                     <Braces className="h-3 w-3 text-slate-500" />
                     {category}
@@ -151,7 +151,7 @@ export default function DeveloperTemplate({
                       </span>
                     ))}
                   </div>
-                </div>
+                </article>
               ))}
             </div>
           </section>
@@ -165,7 +165,7 @@ export default function DeveloperTemplate({
             </h2>
             <div className={r.item}>
               {experience.map((exp) => (
-                <div key={exp.id} className="group">
+                <article key={exp.id} className="group">
                   <div className="mb-2 flex flex-col items-start justify-between gap-2 sm:flex-row sm:items-baseline">
                     <h3 className="text-lg font-black uppercase tracking-tight text-slate-900 transition-colors group-hover:text-blue-600">
                       {exp.position}
@@ -187,7 +187,7 @@ export default function DeveloperTemplate({
                       </li>
                     ))}
                   </ul>
-                </div>
+                </article>
               ))}
             </div>
           </section>
@@ -202,13 +202,13 @@ export default function DeveloperTemplate({
               </h2>
               <div className={r.item}>
                 {education.map((edu) => (
-                  <div key={edu.id} className="space-y-1">
+                  <article key={edu.id} className="space-y-1">
                     <h3 className="text-xs font-bold text-slate-800">{edu.degree}</h3>
                     <p className="text-[11px] font-medium text-slate-500">{edu.institution}</p>
                     <p className="text-[11px] font-bold uppercase tracking-tighter text-slate-500" style={{ color: accentColor }}>
                       {formatDateRange(edu.startDate, edu.endDate, edu.current, locale)}
                     </p>
-                  </div>
+                  </article>
                 ))}
               </div>
             </section>
@@ -222,10 +222,10 @@ export default function DeveloperTemplate({
               </h2>
               <div className={r.item}>
                 {languages.map((language) => (
-                  <div key={language.id} className="flex items-center justify-between text-xs">
+                  <article key={language.id} className="flex items-center justify-between text-xs">
                     <span className="font-bold uppercase tracking-widest text-slate-700">{language.name}</span>
                     <span className="font-mono text-[10px] font-black text-blue-500">{language.level}</span>
-                  </div>
+                  </article>
                 ))}
               </div>
             </section>

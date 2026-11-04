@@ -88,7 +88,7 @@ export default function EducacionTemplate({ cv, accentColor, density = 'normal',
             
             <div className={`${r.item} pl-7`}>
               {experience.map((exp) => (
-                <div key={exp.id} className="relative">
+                <article key={exp.id} className="relative">
                   <div className={`flex justify-between items-start ${r.itemMb}`}>
                     <div>
                       <h4 className="text-base font-bold text-slate-800">{exp.position}</h4>
@@ -111,7 +111,7 @@ export default function EducacionTemplate({ cv, accentColor, density = 'normal',
                       </ul>
                     </div>
                   )}
-                </div>
+                </article>
               ))}
             </div>
           </section>
@@ -129,7 +129,7 @@ export default function EducacionTemplate({ cv, accentColor, density = 'normal',
             
             <div className={`${r.item} pl-7`}>
               {education.map((edu) => (
-                <div key={edu.id} className={`flex gap-4 ${r.cardPad} bg-white border border-slate-200 rounded-lg shadow-sm`}>
+                <article key={edu.id} className={`flex gap-4 ${r.cardPad} bg-white border border-slate-200 rounded-lg shadow-sm`}>
                   <div className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: accentColor + '20' }}>
                     <GraduationCap className="w-6 h-6" style={{ color: accentColor }} />
                   </div>
@@ -141,7 +141,7 @@ export default function EducacionTemplate({ cv, accentColor, density = 'normal',
                   <span className="text-xs text-slate-500 whitespace-nowrap self-center">
                     {formatDateRange(edu.startDate, edu.endDate, edu.current, locale)}
                   </span>
-                </div>
+                </article>
               ))}
             </div>
           </section>
@@ -159,10 +159,10 @@ export default function EducacionTemplate({ cv, accentColor, density = 'normal',
             
             <div className={`grid grid-cols-3 ${r.cardGap} pl-7`}>
               {skills.map((skill, idx) => (
-                <div key={idx} className={`flex items-center gap-2 ${r.cardPad} bg-slate-50 rounded-lg border-l-3`} style={{ borderLeftColor: accentColor }}>
+                <article key={idx} className={`flex items-center gap-2 ${r.cardPad} bg-slate-50 rounded-lg border-l-3`} style={{ borderLeftColor: accentColor }}>
                   <BookOpen className="w-4 h-4 flex-shrink-0" style={{ color: accentColor }} />
                   <span className="text-xs font-medium text-slate-700">{skill}</span>
-                </div>
+                </article>
               ))}
             </div>
           </section>
@@ -181,7 +181,7 @@ export default function EducacionTemplate({ cv, accentColor, density = 'normal',
               
               <div className={r.item}>
                 {languages.map((lang) => (
-                  <div key={lang.id} className="flex items-center justify-between p-2 bg-slate-50 rounded">
+                  <article key={lang.id} className="flex items-center justify-between p-2 bg-slate-50 rounded">
                     <span className="text-sm font-medium text-slate-700">{lang.name}</span>
                     <div className="flex items-center gap-2">
                       <div className="w-16 h-1.5 bg-slate-200 rounded-full overflow-hidden">
@@ -189,7 +189,7 @@ export default function EducacionTemplate({ cv, accentColor, density = 'normal',
                       </div>
                       <span className="text-xs text-slate-500 w-16">{lang.level}</span>
                     </div>
-                  </div>
+                  </article>
                 ))}
               </div>
             </section>
@@ -202,11 +202,11 @@ export default function EducacionTemplate({ cv, accentColor, density = 'normal',
               </h2>
               <div className={r.item}>
                 {references.filter(Boolean).map((ref) => (
-                  <div key={ref.id} className={`${r.cardPad} bg-white border border-slate-200 rounded-lg`}>
+                  <article key={ref.id} className={`${r.cardPad} bg-white border border-slate-200 rounded-lg`}>
                     <p className="text-sm font-bold text-slate-800">{ref.name}</p>
                     <p className="text-xs text-slate-500">{ref.position}</p>
                     <p className="text-xs text-slate-400">{ref.company}</p>
-                  </div>
+                  </article>
                 ))}
               </div>
             </section>

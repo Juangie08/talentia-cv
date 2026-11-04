@@ -86,7 +86,7 @@ export default function CustomerServiceTemplate({
             </h2>
             <div className={r.item}>
               {experience.map((exp) => (
-                <div key={exp.id}>
+                <article key={exp.id}>
                   <div className="flex justify-between items-baseline mb-1">
                     <h3 className="font-bold text-slate-900 text-sm">{exp.position}</h3>
                     <span className="text-[10px] font-bold text-slate-400 whitespace-nowrap">
@@ -106,7 +106,7 @@ export default function CustomerServiceTemplate({
                       </li>
                     ))}
                   </ul>
-                </div>
+                </article>
               ))}
             </div>
           </section>
@@ -156,7 +156,7 @@ export default function CustomerServiceTemplate({
               </h2>
               <div className={`grid grid-cols-1 sm:grid-cols-2 ${r.cardGap}`}>
                 {education.map((edu) => (
-                  <div key={edu.id} className="text-xs">
+                  <article key={edu.id} className="text-xs">
                     <div className="flex justify-between items-baseline mb-0.5">
                       <h3 className="font-bold text-slate-800">{edu.degree}</h3>
                       <span className="text-[9px] text-slate-400 font-bold uppercase">
@@ -164,7 +164,7 @@ export default function CustomerServiceTemplate({
                       </span>
                     </div>
                     <p className="text-slate-500 text-[11px]">{edu.institution}</p>
-                  </div>
+                  </article>
                 ))}
               </div>
             </section>
