@@ -119,8 +119,24 @@ export async function importCVFromText(text: string): Promise<ImportResult> {
   const ai = await extractWithServer(trimmed);
   if (ai) return ai;
 
-  // Respaldo: el texto narrado no es un CV estructurado, así que se va tal
-  // cual al perfil y no se inventa nada más.
+  // Respaldo sin IA: si el texto trae estructura de hoja de vida (contacto
+  // o secciones), se extrae con reglas; si es solo narración libre, el texto
+  // va tal cual al perfil y no se inventa nada más.
+  const parsed = parseResumeText(trimmed);
+  const structured =
+    Boolean(parsed.personalInfo?.email || parsed.personalInfo?.phone) ||
+    Boolean(parsed.summary) ||
+    (parsed.skills?.length || 0) > 0 ||
+    (parsed.experience?.length || 0) > 0 ||
+    (parsed.education?.length || 0) > 0 ||
+    (parsed.languages?.length || 0) > 0;
+  if (structured) {
+    return {
+      data: mergeWithDefaultCVData(parsed),
+      source: 'regex',
+      found: describeExtracted(parsed),
+    };
+  }
   return {
     data: mergeWithDefaultCVData({ summary: trimmed.slice(0, 1200) }),
     source: 'regex',

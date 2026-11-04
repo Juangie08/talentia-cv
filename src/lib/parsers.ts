@@ -41,15 +41,14 @@ export function parseResumeText(text: string): Partial<CVData> {
   const websiteMatch = text.match(/https?:\/\/(?!.*linkedin)[\w.-]+\.\w+[/\w.-]*/i);
   if (websiteMatch) result.personalInfo!.website = websiteMatch[0];
 
-  // El primer línea suele ser el nombre
-  if (lines.length > 0) {
-    const firstLine = lines[0];
-    if (firstLine.length < 60 && !firstLine.includes('@') && !firstLine.match(/^\d/)) {
-      result.personalInfo!.fullName = firstLine;
-    }
+  // Extraer ubicación (línea con 📍 o etiqueta "Ubicación: ...").
+  const locationMatch = text.match(/📍\s*([^\n]{2,80})|ubicaci[oó]n\s*:\s*([^\n]{2,80})/i);
+  if (locationMatch) {
+    result.personalInfo!.location = (locationMatch[1] || locationMatch[2] || '').trim();
   }
 
-  // Detectar secciones por headers comunes
+  // Detectar secciones por headers comunes (se define antes porque el nombre
+  // y el titular se validan contra estos patrones).
   const sectionPatterns: Record<string, RegExp> = {
     summary: /^(resumen|perfil|sobre m[ií]|acerca de|summary|profile|about|objetivo)/i,
     experience: /^(experiencia|experience|work|empleo|historial laboral|trayectoria)/i,
@@ -59,13 +58,43 @@ export function parseResumeText(text: string): Partial<CVData> {
     references: /^(referencias|references)/i,
   };
 
+  // Los títulos pegados de Word/Google Docs suelen traer emojis o viñetas
+  // ("🧩 Resumen", "• Experiencia"): se ignoran solo para detectar secciones.
+  const cleanHeader = (line: string) => line.replace(/^[^a-zA-ZáéíóúÁÉÍÓÚñÑüÜ]+/, '');
+  const isSectionHeader = (line: string) =>
+    Object.values(sectionPatterns).some((pattern) => pattern.test(cleanHeader(line)));
+
+  // El primer línea suele ser el nombre
+  if (lines.length > 0) {
+    const firstLine = cleanHeader(lines[0]);
+    if (firstLine.length > 1 && firstLine.length < 60 && !firstLine.includes('@') && !firstLine.match(/^\d/)) {
+      result.personalInfo!.fullName = firstLine;
+    }
+  }
+
+  // La segunda línea suele ser el titular ("Asesor de servicio al cliente").
+  if (lines.length > 1) {
+    const secondLine = cleanHeader(lines[1]);
+    if (
+      secondLine.length > 2 &&
+      secondLine.length < 80 &&
+      !secondLine.includes('@') &&
+      !secondLine.match(/^\d/) &&
+      !secondLine.match(/https?:\/\//i) &&
+      !isSectionHeader(lines[1])
+    ) {
+      result.personalInfo!.title = secondLine;
+    }
+  }
+
   let currentSection = '';
   const sectionContent: Record<string, string[]> = {};
 
   for (const line of lines) {
     let matched = false;
+    const header = cleanHeader(line);
     for (const [section, pattern] of Object.entries(sectionPatterns)) {
-      if (pattern.test(line)) {
+      if (pattern.test(header)) {
         currentSection = section;
         sectionContent[section] = [];
         matched = true;
@@ -87,8 +116,8 @@ export function parseResumeText(text: string): Partial<CVData> {
     const skillsText = sectionContent.skills.join(', ');
     result.skills = skillsText
       .split(/[,;•·|\n]/)
-      .map(s => s.trim())
-      .filter(s => s.length > 1 && s.length < 50);
+      .map((s) => s.trim().replace(/^[([{'"«¿¡]+|[)\]}'"»?!.:;]+$/g, '').trim())
+      .filter((s) => s.length > 1 && s.length < 50);
   }
 
   // Procesar experiencia (simplificado)
