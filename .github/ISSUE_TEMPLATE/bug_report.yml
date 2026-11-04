@@ -1,0 +1,74 @@
+name: 🐛 Bug report
+description: Something is broken or does not behave as expected
+title: '[Bug] '
+labels: ['bug', 'needs triage']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug! Please **do not** include
+        real personal data from a resume. For security issues, use the private
+        channel described in SECURITY.md instead.
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: A clear description of the bug.
+      placeholder: When I export to Word, the languages section disappears.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Go to /editor
+        2. Fill in "Languages"
+        3. Click "Export > Word"
+        4. See the missing section
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: dropdown
+    id: language
+    attributes:
+      label: Interface language
+      options:
+        - Español
+        - English
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Editor / forms
+        - Import (PDF, Word, image, free text)
+        - AI features (extract, improve, suggest, adapt)
+        - Export (PDF, Word, text)
+        - Templates and styling
+        - Accounts and saving
+        - Landing page and translations
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: browser
+    attributes:
+      label: Browser and OS
+      placeholder: Chrome 128 on Windows 11
+    validations:
+      required: false
+  - type: textarea
+    id: logs
+    attributes:
+      label: Console output or screenshots
+      description: Paste any error from the browser console.
+    validations:
+      required: false

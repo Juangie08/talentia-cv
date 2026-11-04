@@ -1,0 +1,86 @@
+{
+  "name": "talentia",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Open source resume builder with AI import, live preview and PDF/Word export.",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "homepage": "https://talentiacv.vercel.app",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/talentia-hdv/talentia.git"
+  },
+  "bugs": {
+    "url": "https://github.com/talentia-hdv/talentia/issues"
+  },
+  "keywords": [
+    "resume",
+    "cv",
+    "resume-builder",
+    "open-source",
+    "nextjs",
+    "typescript",
+    "tailwindcss",
+    "ai"
+  ],
+  "scripts": {
+    "dev": "next dev -p 3500",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit",
+    "test:export": "tsc src/lib/export.ts --outDir scripts/.build --module commonjs --target ES2020 --moduleResolution node --esModuleInterop --skipLibCheck && node scripts/test-ats-pdf.cjs",
+    "test:styled": "tsc src/lib/export.ts --outDir scripts/.build --module commonjs --target ES2020 --moduleResolution node --esModuleInterop --skipLibCheck && node scripts/test-styled-pdf.cjs",
+    "test:balance": "tsc src/lib/export.ts --outDir scripts/.build --module commonjs --target ES2020 --moduleResolution node --esModuleInterop --skipLibCheck && node scripts/test-balance.cjs",
+    "test:quality": "tsc src/lib/cv-quality.ts --outDir scripts/.build --module commonjs --target ES2020 --moduleResolution node --esModuleInterop --skipLibCheck && node scripts/test-cv-quality.cjs",
+    "test:prompts": "tsc src/lib/prompts.ts --outDir scripts/.build --module commonjs --target ES2020 --moduleResolution node --esModuleInterop --skipLibCheck && node scripts/test-prompts.cjs",
+    "test:match": "tsc src/lib/jobMatch.ts --outDir scripts/.build --module commonjs --target ES2020 --moduleResolution node --esModuleInterop --skipLibCheck && node scripts/test-jobmatch.cjs",
+    "test:photo": "tsc src/lib/export.ts --outDir scripts/.build --module commonjs --target ES2020 --moduleResolution node --esModuleInterop --skipLibCheck && node scripts/test-photo-pdf.cjs",
+    "test:all": "npm run test:export && npm run test:styled && npm run test:balance && npm run test:quality && npm run test:prompts && npm run test:match && npm run check:templates",
+    "check:templates": "node scripts/check-templates.cjs",
+    "test:print": "node scripts/test-print-pdf.cjs",
+    "check:contrast": "node scripts/check-contrast.cjs",
+    "check:i18n": "node scripts/check-i18n.mjs",
+    "check:density": "node scripts/check-density.cjs"
+  },
+  "dependencies": {
+    "@radix-ui/react-accordion": "^1.2.12",
+    "@radix-ui/react-checkbox": "^1.3.3",
+    "@radix-ui/react-dialog": "^1.1.15",
+    "@radix-ui/react-label": "^2.1.8",
+    "@radix-ui/react-select": "^2.2.6",
+    "@radix-ui/react-separator": "^1.1.8",
+    "@radix-ui/react-slot": "^1.2.4",
+    "@radix-ui/react-tabs": "^1.1.13",
+    "@radix-ui/react-tooltip": "^1.2.8",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "docx": "^9.6.0",
+    "get-port": "^7.2.0",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^4.2.0",
+    "lucide-react": "^0.577.0",
+    "mammoth": "^1.11.0",
+    "next": "14.2.35",
+    "pdfjs-dist": "^3.11.174",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-dropzone": "^15.0.0",
+    "sonner": "^2.0.7",
+    "tailwind-merge": "^3.5.0",
+    "tailwindcss-animate": "^1.0.7"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.35",
+    "postcss": "^8",
+    "puppeteer-core": "^25.12.0",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
+  }
+}

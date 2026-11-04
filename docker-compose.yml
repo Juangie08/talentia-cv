@@ -1,0 +1,25 @@
+# Talentia en Docker: un comando para tener la app arriba.
+#
+#   cp .env.example .env      # rellena AI_API_KEY si quieres IA
+#   docker compose up --build
+#
+# Sin base de datos: cada hoja de vida se guarda en el navegador y el
+# antiabuso de la IA es un límite por IP en memoria. Para probar sin clave
+# de IA, descomenta AI_MOCK.
+
+services:
+  talentia:
+    build: .
+    ports:
+      - "3500:3500"
+    env_file:
+      - .env
+    environment:
+      NODE_ENV: production
+      # AI_MOCK: "1"
+    volumes:
+      - talentia-uploads:/app/public/uploads
+    restart: unless-stopped
+
+volumes:
+  talentia-uploads:

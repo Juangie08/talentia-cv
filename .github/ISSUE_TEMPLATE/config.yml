@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 🔒 Report a security vulnerability
+    url: https://github.com/talentia-hdv/talentia/security/advisories/new
+    about: Please report security issues privately, never in a public issue.
+  - name: 💬 Questions and ideas
+    url: https://github.com/talentia-hdv/talentia/discussions
+    about: Ask questions, share how you use Talentia or discuss ideas.
+  - name: 📖 Contributing guide
+    url: https://github.com/talentia-hdv/talentia/blob/main/CONTRIBUTING.md
+    about: Setup, project structure, translations and how to add a template.

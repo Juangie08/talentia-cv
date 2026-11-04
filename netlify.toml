@@ -1,0 +1,17 @@
+# Configuración de despliegue en Netlify para Talentia (HDV Gratis).
+# La conexión a la cuenta de Netlify la haces TÚ desde tu propio panel o con
+# `netlify login` en la cuenta correcta; este archivo solo define CÓMO se construye.
+
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+# Versión de Node para el build (usa 18+ por Prisma y Next 14).
+[build.environment]
+  NODE_VERSION = "20"
+  NEXT_TELEMETRY_DISABLED = "1"
+
+# Runtime de Next.js en Netlify (Netlify lo instala automáticamente al
+# declararlo aquí; no hace falta agregarlo a package.json).
+[[plugins]]
+  package = "@netlify/plugin-nextjs"

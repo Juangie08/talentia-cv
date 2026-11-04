@@ -1,0 +1,614 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=Merriweather:wght@400;700&family=DM+Sans:wght@400;500;700&family=Lora:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&family=Source+Sans+3:wght@400;500;600;700&family=Cormorant+Garamond:wght@500;600;700&display=swap");
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer base {
+  :root {
+    --background: 220 20% 97%;
+    --foreground: 224 71% 4%;
+    --card: 0 0% 100%;
+    --card-foreground: 224 71% 4%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 224 71% 4%;
+    --primary: 213 100% 34%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 45 100% 54%;
+    --secondary-foreground: 220.9 39.3% 11%;
+    --muted: 220 14.3% 95.9%;
+    --muted-foreground: 220 8.9% 46.1%;
+    --accent: 220 14.3% 95.9%;
+    --accent-foreground: 220.9 39.3% 11%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 213 100% 34%;
+    --chart-1: 213 100% 34%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 45 100% 54%;
+    --chart-5: 0 84% 44%;
+    --radius: 0.75rem;
+
+    /* Paleta Colombia */
+    --colombia-blue: #0033A0;
+    --colombia-yellow: #FCD116;
+    --colombia-red: #CE1126;
+  }
+  .dark {
+    --background: 224 71% 4%;
+    --foreground: 210 40% 98%;
+    --card: 224 71% 8%;
+    --card-foreground: 210 40% 98%;
+    --popover: 224 71% 8%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 213 100% 34%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 215 27.9% 16.9%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 215 27.9% 16.9%;
+    --muted-foreground: 217.9 10.6% 64.9%;
+    --accent: 215 27.9% 16.9%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 215 27.9% 16.9%;
+    --input: 215 27.9% 16.9%;
+    --ring: 213 100% 34%;
+    --chart-1: 213 100% 34%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family:
+      "Manrope",
+      system-ui,
+      -apple-system,
+      sans-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  .font-display {
+    font-family: "Space Grotesk", "Manrope", system-ui, sans-serif;
+  }
+}
+
+/* Scrollbar personalizado */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground) / 0.3);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground) / 0.5);
+}
+
+/* Animación de entrada */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+@keyframes goldShine {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+.text-gold-shine {
+  background: linear-gradient(
+    120deg,
+    #8c6b1f 0%,
+    #f5d57a 25%,
+    #fff2c2 45%,
+    #d4a84a 65%,
+    #ffefb0 85%,
+    #8c6b1f 100%
+  );
+  background-size: 200% 100%;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  text-shadow: 0 0 12px rgba(255, 214, 120, 0.35);
+  animation: goldShine 3.2s linear infinite;
+}
+
+@keyframes logoPulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.06);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+}
+
+.logo-orb {
+  position: absolute;
+  inset: -4px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow:
+    0 0 12px rgba(255, 255, 255, 0.35),
+    0 0 24px rgba(255, 255, 255, 0.25);
+  animation: logoPulse 4.2s ease-in-out infinite;
+}
+
+@keyframes saveGlow {
+  0% {
+    box-shadow: 0 0 0 rgba(255, 214, 120, 0);
+  }
+  50% {
+    box-shadow:
+      0 0 0 2px rgba(255, 230, 160, 0.25),
+      0 8px 18px rgba(255, 214, 120, 0.35);
+  }
+  100% {
+    box-shadow: 0 0 0 rgba(255, 214, 120, 0);
+  }
+}
+
+@keyframes arrowNudge {
+  0%, 100% {
+    transform: translateX(0);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateX(-8px);
+    opacity: 1;
+  }
+}
+
+@keyframes confettiBurst {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--burst-x, 0px), var(--burst-y, -24px)) rotate(220deg);
+  }
+}
+
+.save-glow {
+  border-color: rgba(255, 214, 120, 0.6);
+  animation: saveGlow 2.8s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-in-up {
+    animation: none;
+  }
+  .text-gold-shine {
+    animation: none;
+    background-position: 50% 50%;
+  }
+  .logo-orb,
+  .save-glow {
+    animation: none;
+  }
+}
+
+/* ===== Page Container System ===== */
+
+/* Contenedor base de la hoja */
+.page {
+  position: relative;
+  background-color: #ffffff;
+  overflow: hidden;
+  box-sizing: border-box;
+  /* Fondo siempre sólido, incluso al imprimir */
+  -webkit-print-color-adjust: exact !important;
+  print-color-adjust: exact !important;
+  color-adjust: exact !important;
+}
+
+/* A4: 210mm x 297mm */
+/* min-height (no height fija): la hoja crece si el contenido excede una
+   página, así nada se recorta en pantalla. En el PDF el contenido que pase
+   de una página fluye a la siguiente automáticamente. */
+.page-a4 {
+  width: 210mm;
+  min-height: 297mm;
+  max-width: 210mm;
+}
+
+/* Oficio/Legal: 216mm x 330mm */
+.page-oficio {
+  width: 216mm;
+  min-height: 330mm;
+  max-width: 216mm;
+}
+
+/* Carta: 215.9mm x 279.4mm */
+.page-letter {
+  width: 215.9mm;
+  min-height: 279.4mm;
+  max-width: 215.9mm;
+}
+
+/* Continuo: ancho fijo, altura automática */
+.page-continuous {
+  width: 210mm;
+  min-height: 297mm;
+  max-width: 210mm;
+  height: auto;
+}
+
+/* ===== @page rules para impresión/PDF ===== */
+@page {
+  margin: 0;
+}
+
+@page a4 {
+  size: 210mm 297mm;
+  margin: 0;
+}
+
+@page legal {
+  size: 216mm 330mm;
+  margin: 0;
+}
+
+@page letter {
+  size: 215.9mm 279.4mm;
+  margin: 0;
+}
+
+/* ===== Impresión/PDF exacta de la vista previa =====
+   El botón "Descargar PDF" imprime #cv-preview tal cual se ve. Para que el
+   contenido caiga dentro de la hoja (y no empujado fuera por el resto del
+   editor, que aunque invisible seguiría ocupando espacio), el editor marca:
+   - data-print-hide: cromo que no se imprime (barra, formulario, panel…)
+   - data-print-area: la columna de la vista previa
+   - data-print-scale-reset: el envoltorio con alto fijo en pantalla
+   El JS añade body.print-cv justo antes de window.print(). */
+@media print {
+  /* Sin transiciones ni animaciones en papel: el preview usa transition-all
+     y el transform tardaba 200ms en llegar a none (el PDF salía a mitad). */
+  body.print-cv *,
+  body.print-cv *::before,
+  body.print-cv *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+  body.print-cv [data-print-hide] {
+    display: none !important;
+  }
+  body.print-cv main,
+  body.print-cv [data-print-area] {
+    display: block !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+    background: #ffffff !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  body.print-cv [data-print-scale-reset] {
+    height: auto !important;
+    transform: none !important;
+  }
+  body.print-cv #cv-preview {
+    position: static !important;
+    transform: none !important;
+    width: 100% !important;
+    overflow: visible !important;
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    margin: 0 !important;
+  }
+  body.print-cv #cv-preview,
+  body.print-cv #cv-preview * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+  /* Cada entrada (empleo, estudio) intenta no partirse a mitad. */
+  body.print-cv #cv-preview article {
+    break-inside: avoid;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
+  /* La hoja se imprime en blanco: el gris era el fondo del editor, no del
+     documento. Imprimirlo gastaba tinta y bajaba el contraste del texto. */
+  .page {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+    background-color: #ffffff !important;
+  }
+
+  .page-a4 {
+    page: a4;
+    width: 210mm;
+    min-height: 297mm;
+    height: auto;
+  }
+
+  .page-oficio {
+    page: legal;
+    width: 216mm;
+    min-height: 330mm;
+    height: auto;
+  }
+
+  .page-letter {
+    page: letter;
+    width: 215.9mm;
+    min-height: 279.4mm;
+    height: auto;
+  }
+
+  /* Ocultar todo excepto el CV */
+  body * {
+    visibility: hidden;
+  }
+  #cv-preview,
+  #cv-preview *,
+  .page,
+  .page * {
+    visibility: visible !important;
+  }
+  #cv-preview {
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: 0;
+    padding: 0;
+    /* Sin esto, en pantallas angostas el PDF salía miniaturizado: el
+       preview vive escalado con transform y la impresión lo heredaba. */
+    transform: none !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+  #cv-preview .page {
+    box-shadow: none !important;
+    border: none !important;
+  }
+}
+
+/* ===== CV CSS Variables ===== */
+.cv-customization-root {
+  --cv-font-body: 'Inter', sans-serif;
+  --cv-font-size-base: 10px;
+  --cv-font-size-heading: 12px;
+  --cv-font-size-name: 26px;
+  --cv-font-weight-body: normal;
+  --cv-font-style-body: normal;
+  --cv-decoration-heading: none;
+  --cv-transform-heading: uppercase;
+  --cv-color-accent: #2563EB;
+  --cv-color-header-bg: #1E293B;
+  --cv-color-header-text: #FFFFFF;
+  --cv-color-body-text: #1A1A1A;
+  --cv-spacing-section: 16px;
+  --cv-page-padding: 32px;
+}
+
+.cv-template-wrapper {
+  font-family: var(--cv-font-body);
+  font-size: var(--cv-font-size-base);
+  color: var(--cv-color-body-text);
+  font-weight: var(--cv-font-weight-body);
+  font-style: var(--cv-font-style-body);
+}
+
+/* ===== Nada se recorta al imprimir o exportar =====
+   Una hoja de vida con texto cortado es peor que una sin adornos: el
+   reclutador pierde información sin avisarnos. Estas reglas hacen que el
+   contenido se parta antes de desbordarse. Se aplican sobre `.page`, que
+   envuelve TODAS las plantillas y es el contenedor con `overflow: hidden`
+   que termina recortando lo que se sale.
+
+   No se enganchan a `.cv-template-wrapper` a propósito: esa clase también
+   fija tipografía, y aplicarla a las plantillas que hoy no la llevan
+   (Creative, Developer) les cambiaría el tamaño de letra. */
+
+/* Palabras largas (correos, URLs) pueden partirse en cualquier punto en vez
+   de empujar la caja hacia afuera. */
+.page,
+.page * {
+  overflow-wrap: break-word;
+}
+
+/* Las filas "etiqueta a la izquierda, valor a la derecha" (cargo + fechas,
+   título + periodo) bajan el valor a la línea siguiente cuando no cabe, en
+   lugar de desbordar la columna y ser recortadas. Ninguna plantilla fija
+   flex-nowrap, así que envolver siempre es preferible a cortar. */
+.page .flex.justify-between {
+  flex-wrap: wrap;
+  row-gap: 0.25rem;
+}
+
+/* Un hijo flexible puede encogerse por debajo de su palabra más larga; sin
+   esto, un título largo empuja la fecha fuera de la columna. */
+.page .flex.justify-between > *,
+.page .flex.items-center > *,
+.page .flex.items-start > *,
+.page .flex.items-baseline > * {
+  min-width: 0;
+}
+
+/* Las "pastillas" (fechas, idiomas, niveles) se niegan a partirse, así que
+   al menos deben poder caer a la línea siguiente en vez de recortarse. */
+.page .whitespace-nowrap {
+  flex-shrink: 0;
+  max-width: 100%;
+  white-space: normal;
+}
+
+/* Una cadena sin espacios (URL, correo) sí puede partirse aunque marque
+   nowrap: es preferible un salto de línea raro a perder el texto entero. */
+.page a,
+.page .break-all {
+  overflow-wrap: anywhere;
+}
+
+.cv-section-title {
+  font-size: var(--cv-font-size-heading);
+  font-weight: 700;
+  text-transform: var(--cv-transform-heading);
+  text-decoration: var(--cv-decoration-heading);
+  color: var(--cv-color-accent);
+}
+
+.cv-name {
+  font-size: var(--cv-font-size-name);
+  font-weight: 800;
+}
+
+.cv-header-bg {
+  background-color: var(--cv-color-header-bg);
+  color: var(--cv-color-header-text);
+}
+
+/* ===== CV Color Overrides (resuelve conflicto con Tailwind) ===== */
+/* Estas reglas fuerzan que los colores CSS variables ganen sobre Tailwind text-slate-* */
+.cv-template-wrapper * {
+  color: inherit;
+}
+.cv-template-wrapper .cv-body-text,
+.cv-template-wrapper p:not([style*="color"]),
+.cv-template-wrapper span:not([style*="color"]),
+.cv-template-wrapper li:not([style*="color"]),
+.cv-template-wrapper h1:not([style*="color"]),
+.cv-template-wrapper h3:not([style*="color"]) {
+  color: var(--cv-color-body-text) !important;
+}
+.cv-template-wrapper .cv-accent-text,
+.cv-template-wrapper [class*="cv-section-title"] {
+  color: var(--cv-color-accent) !important;
+}
+
+/* ===== Contraste en las barras de color =====
+   El acento por defecto (#0033A0) es el MISMO color que el fondo de la barra
+   (#0033A0). Medido en el navegador, los títulos e iconos de la barra lateral
+   quedaban en 1.00:1 de contraste: invisibles, ni en pantalla ni impresos.
+
+   Sobre fondo oscuro el acento se aclara y se fuerza en títulos e iconos. Estas
+   reglas van DESPUÉS de las de arriba y con más especificidad a propósito: las
+   anteriores también usan !important, así que sin subir la especificidad el
+   acento crudo seguiría ganando.
+
+   `--cv-accent-on-dark` lleva un nombre propio porque si redefiniéramos
+   `--cv-color-accent` en la misma regla que lo lee, la referencia sería
+   circular y la declaración se descartaría. */
+.cv-dark-panel {
+  --cv-accent-on-dark: #a8c4ff;
+  --cv-accent-on-dark: color-mix(in srgb, var(--cv-color-accent) 32%, #ffffff);
+}
+
+/* `:not(.text-transparent)` deja intactos los titulos con degradado
+   (bg-clip-text + text-transparent): su color "transparente" no es
+   ilegibilidad, es la tecnica para que se vea el fondo. */
+.cv-dark-panel h1:not(.text-transparent),
+.cv-dark-panel h2:not(.text-transparent),
+.cv-dark-panel h3:not(.text-transparent),
+.cv-dark-panel h4:not(.text-transparent),
+.cv-dark-panel svg,
+.cv-dark-panel [class*="cv-section-title"],
+.cv-dark-panel .cv-accent-text,
+.cv-dark-panel .cv-accent-on-dark {
+  color: var(--cv-accent-on-dark) !important;
+}
+
+/* Etiquetas de datos con el color de acento en línea (nivel de idioma, cargo
+   en negrita): sobre fondo oscuro el acento crudo tampoco se lee. */
+.cv-dark-panel span[style*="color"],
+.cv-dark-panel p[style*="color"],
+.cv-dark-panel li[style*="color"],
+.cv-dark-panel em[style*="color"],
+.cv-dark-panel strong[style*="color"] {
+  color: var(--cv-accent-on-dark) !important;
+}
+
+/* El panel oscuro puede ser el propio elemento coloreado: es el caso de las
+   pastillas de habilidades de fondo oscuro dentro de la columna blanca. Los
+   selectores de descendente de arriba no lo alcanzaban. */
+.cv-dark-panel[style*="color"] {
+  color: var(--cv-accent-on-dark) !important;
+}
+
+/* El mismo problema, más grave: la regla de arriba que empuja el color de
+   texto del cuerpo (#1A1A1A, casi negro) sobre TODO p/span/li/h1/h3 que no
+   lleve color en línea. Dentro de una barra de color eso pintaba texto negro
+   sobre azul. Aquí se devuelve el color de texto del encabezado (claro). */
+.cv-dark-panel p:not([style*="color"]),
+.cv-dark-panel span:not([style*="color"]),
+.cv-dark-panel li:not([style*="color"]),
+.cv-dark-panel h1:not([style*="color"]),
+.cv-dark-panel h3:not([style*="color"]) {
+  color: var(--cv-color-header-text, #ffffff) !important;
+}
+
+/* ===== Style Panel ===== */
+.style-panel-toggle {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 40;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  border-radius: 8px 0 0 8px;
+  cursor: pointer;
+  transition: right 0.3s ease;
+}
+
+.style-panel-collapsed .style-panel-toggle {
+  right: 0;
+}
+
+.style-panel-open .style-panel-toggle {
+  right: 272px;
+}
